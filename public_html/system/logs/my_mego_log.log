@@ -1,0 +1,6 @@
+2014-12-07 15:42:34 - PHP Notice:  Undefined variable: i in C:\Winginx\home\freyr-2\public_html\catalog\controller\common\column_left.php on line 77
+2014-12-07 15:42:34 - PHP Notice:  Undefined index:  in C:\Winginx\home\freyr-2\public_html\catalog\controller\common\column_left.php on line 77
+2014-12-07 15:42:34 - PHP Notice:  Undefined variable: i in C:\Winginx\home\freyr-2\public_html\catalog\controller\common\column_left.php on line 77
+2014-12-07 15:42:34 - PHP Notice:  Undefined index:  in C:\Winginx\home\freyr-2\public_html\catalog\controller\common\column_left.php on line 77
+2014-12-07 16:35:25 - PHP Notice:  Undefined variable: key in C:\Winginx\home\freyr-2\public_html\catalog\view\theme\default\template\common\content_top.tpl on line 2
+2014-12-07 16:35:26 - PHP Notice:  Undefined variable: key in C:\Winginx\home\freyr-2\public_html\catalog\view\theme\default\template\common\content_top.tpl on line 2

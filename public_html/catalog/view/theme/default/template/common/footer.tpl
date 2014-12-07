@@ -1,4 +1,5 @@
-<div id="footer">
+</div>
+<div id="footer"><div class="screen">
   <?php if ($informations) { ?>
   <div class="column">
     <h3><?php echo $text_information; ?></h3>
@@ -35,7 +36,7 @@
       <li><a href="<?php echo $newsletter; ?>"><?php echo $text_newsletter; ?></a></li>
     </ul>
   </div>
-</div>
+</div></div>
 <!--
 OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
 Please donate via PayPal to donate@opencart.com
@@ -45,5 +46,4 @@ Please donate via PayPal to donate@opencart.com
 OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
 Please donate via PayPal to donate@opencart.com
 //-->
-</div>
 </body></html>
