@@ -64,7 +64,7 @@ label {
 	cursor: pointer;
 }
 /* layout */
-#container, div.screen{
+#container {
 	width: 980px;
 	margin-left: auto;
 	margin-right: auto;
@@ -89,6 +89,12 @@ label {
 	margin-right: 195px;
 }
 /* header */
+#top {
+	height: 30px;
+	border-top: 1px solid #DBDEE1;
+	border-bottom: 1px solid #DBDEE1;
+	background: #F8F8F8;
+}
 
 #header {
 	height: 90px;
@@ -106,7 +112,7 @@ label {
 	position: absolute;
 	top: 59px;
 	left: 360px;
-	width: 108px;
+	width: 120px;
 	color: #999;
 	line-height: 17px;
 }
@@ -130,6 +136,7 @@ label {
 	text-decoration: none;
 	margin-right: 2px;
 	margin-bottom: 2px;
+	border: 1px solid #CCCCCC;
 }
 #currency a b {
 	color: #000;
@@ -181,6 +188,10 @@ label {
 	border-left: 1px solid #EEEEEE;
 	border-right: 1px solid #EEEEEE;
 	border-bottom: 1px solid #EEEEEE;
+	-webkit-border-radius: 0px 0px 7px 7px;
+	-moz-border-radius: 0px 0px 7px 7px;
+	-khtml-border-radius: 0px 0px 7px 7px;
+	border-radius: 0px 0px 7px 7px;
 	-webkit-box-shadow: 0px 2px 2px #DDDDDD;
 	-moz-box-shadow: 0px 2px 2px #DDDDDD;
 	box-shadow: 0px 2px 2px #DDDDDD;
@@ -312,13 +323,18 @@ font-weight:700;
 }
 /* menu */
 #menu {
-background: #222;
-height: 37px;
-margin-bottom: 15px;
--webkit-box-shadow: 0px 2px 2px #DDDDDD;
--moz-box-shadow: 0px 2px 2px #DDDDDD;
-box-shadow: 0px 2px 2px #DDDDDD;
-padding: 0px 5px
+	background: #585858;
+	border-bottom: 1px solid #000000;
+	height: 37px;
+	margin-bottom: 15px;
+	-webkit-border-radius: 5px 5px 5px 5px;
+	-moz-border-radius: 5px 5px 5px 5px;
+	-khtml-border-radius: 5px 5px 5px 5px;
+	border-radius: 5px 5px 5px 5px;
+	-webkit-box-shadow: 0px 2px 2px #DDDDDD;
+	-moz-box-shadow: 0px 2px 2px #DDDDDD;
+	box-shadow: 0px 2px 2px #DDDDDD;
+	padding: 0px 5px;
 }
 #menu ul {
 	list-style: none;
@@ -329,42 +345,40 @@ padding: 0px 5px
 	position: relative;
 	float: left;
 	z-index: 20;
-	padding:0
+	padding: 6px 5px 5px 0px;
 }
 #menu > ul > li:hover {
 }
 #menu > ul > li > a {
-border-top: 1px solid #000;
-border-bottom: 1px solid #000;
-font-size: 14px;
-color: #FFF;
-line-height: 14px;
-text-decoration: none;
-display: block;
-padding: 10px;
-z-index: 6;
-position: relative
+	font-size: 13px;
+	color: #FFF;
+	line-height: 14px;
+	text-decoration: none;
+	display: block;
+	padding: 6px 10px 6px 10px;
+	margin-bottom: 5px;
+	z-index: 6;
+	position: relative;
 }
-#menu > ul > li:hover > a{
-background: #0074A2;
-border-top: 1px solid #0078A9;
-border-bottom: 1px solid #0078A9;
-box-shadow: 0 0 2px #493A34;
-padding-bottom:11px
-}
-#menu > ul > li > a.active{
-border-bottom:2px solid #11A2E1
+#menu > ul > li:hover > a, #menu > ul > li > a.active {
+	background: #000000;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	border-radius: 5px;
 }
 #menu > ul > li > div {
-display: none;
-background: #FFFFFF;
-position: absolute;
-z-index: 5;
-padding: 5px;
-border-left: 1px solid #000;
-border-right: 1px solid #000;
-border-bottom: 1px solid #000;
-background: url('../image/menu.png')
+	display: none;
+	background: #FFFFFF;
+	position: absolute;
+	z-index: 5;
+	padding: 5px;
+	border: 1px solid #000000;
+	-webkit-border-radius: 0px 0px 5px 5px;
+	-moz-border-radius: 0px 0px 5px 5px;
+	-khtml-border-radius: 0px 0px 5px 5px;
+	border-radius: 0px 0px 5px 5px;
+	background: url('../image/menu.png');
 }
 #menu > ul > li:hover > div {
 	display: table;
@@ -390,13 +404,17 @@ background: url('../image/menu.png')
 	color: #FFFFFF;
 }
 .breadcrumb {
-background: url('../image/background.png') repeat-x transparent;
-border: 1px solid #DBDEE1;
-color: #CCCCCC;
-height: 30px;
-line-height: 30px;
-margin-bottom: 10px;
-padding-left: 10px
+	background: url('../image/background.png') repeat-x transparent;
+	border: 1px solid #DBDEE1;
+	-webkit-border-radius: 7px 7px 0px 0px;
+	-moz-border-radius: 7px 7px 0px 0px;
+	-khtml-border-radius: 7px 7px 0px 0px;
+	border-radius: 7px 7px 0px 0px;
+	color: #CCCCCC;
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 10px;
+	padding-left: 10px;
 }
 .breadcrumb a {
 color:#000;
@@ -649,27 +667,29 @@ a.button:hover, input.button:hover {
 	margin-bottom: 20px;
 }
 .box .box-heading {
-border-top:2px solid #C4CACB;
-background:#0F175F;
-padding: 8px 10px 9px 10px;
-font-family: Arial, Helvetica, sans-serif;
-font-size: 14px;
-font-weight: bold;
-line-height: 14px;
-color:#FFF
-}
-#column-left .box-heading{
-border-top: 2px solid #E75478
-}
-#column-right .box-heading{
-border-top:2px solid #6CB3AB
+	-webkit-border-radius: 7px 7px 0px 0px;
+	-moz-border-radius: 7px 7px 0px 0px;
+	-khtml-border-radius: 7px 7px 0px 0px;
+	border-radius: 7px 7px 0px 0px;
+	border: 1px solid #DBDEE1;
+	background: url('../image/background.png') repeat-x;
+	padding: 8px 10px 7px 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 14px;
+	color: #333;
 }
 .box .box-content {
-background: #EEE;
-border-left: 2px solid #EDDFC9;
-border-right: 2px solid #EDDFC9;
-border-bottom: 2px solid #EDDFC9;
-padding: 10px
+	background: #FFFFFF;
+	-webkit-border-radius: 0px 0px 7px 7px;
+	-moz-border-radius: 0px 0px 7px 7px;
+	-khtml-border-radius: 0px 0px 7px 7px;
+	border-radius: 0px 0px 7px 7px;
+	border-left: 1px solid #DBDEE1;
+	border-right: 1px solid #DBDEE1;
+	border-bottom: 1px solid #DBDEE1;
+	padding: 10px;
 }
 /* box products */
 .box-product {
@@ -1630,12 +1650,13 @@ height:30px;
 }
 /* footer */ 
 #footer {
-clear: both;
-overflow: auto;
-min-height: 100px;
-padding: 20px;
-border-top: 2px solid #48B84E;
-background: #F8F8F8
+	clear: both;
+	overflow: auto;
+	min-height: 100px;
+	padding: 20px;
+	border-top: 1px solid #DBDEE1;
+	border-bottom: 1px solid #DBDEE1;
+	background: #F8F8F8;
 }
 #footer h3 {
 	color: #000000;
@@ -1664,9 +1685,9 @@ background: #F8F8F8
 	text-decoration: underline;
 }
 #powered {
-background:#F8F8F8;
-text-align:right;
-clear:both
+	margin-top: 5px;
+	text-align: right;
+	clear: both;
 }
 /* banner */
 .banner div {
@@ -1675,6 +1696,5 @@ clear:both
 	display: none;
 }
 .banner div img {
-border:2px solid #E4E6FF;
-margin-bottom:20px
+	margin-bottom: 20px;
 }
