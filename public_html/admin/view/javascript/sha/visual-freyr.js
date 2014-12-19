@@ -1,9 +1,11 @@
 var gjsiframe, gjstitle, gcentertopwidth = 0, gcentertopheight = false, gcenterbottom = false, gcenterfather = false;
-
 /* 
-// module: Visual Manage modules : "Freyr"
-// version: 2.0 Alpha (версия, только для тестирования)
-// autor: Copyright © Шуляк Роман, ноябрь 2014г.   mail: roma78sha@gmail.com  home-page: http://r.konotop.info  load: https://opencartforum.com/index.php?app=core&module=search&do=user_activity&search_app=downloads&mid=678008
+// MODULE: visual mange: "Freyr 2.0" Alpha (версия, только для тестирования)
+// AUTOR: Copyright © Шуляк Роман, ноябрь 2014г.
+// CONTACT: mail: roma78sha@gmail.com  
+//          home-page: http://r.konotop.info
+//          git: https://github.com/roma78sha/freyr-2
+//          load: https://opencartforum.com/index.php?app=core&module=search&do=user_activity&search_app=downloads&mid=678008
  */
 
 // ready
@@ -44,14 +46,19 @@ function pjsBuild(th){
   
   // позициии
   var ppositions = {
-	'column_left' : "#column-left",
-	'column_right' : "#column-right",
-	'content_top': "#content-top",
-	'content_bottom': "#content-bottom"
+	'column_left' : { 'name': "left", 'id': "#column-left"},
+	'column_right' : { 'name': "right", 'id': "#column-right"},
+	'content_top' : { 'name': "top", 'id': "#content-top"},
+	'content_bottom' : { 'name': "bottom", 'id': "#content-bottom"}
   }
 
-  // обнуляем
-  n_banner = 0;n_slideshow = 0;n_carousel = 0;n_welcome = 0;
+  // обнуляем // n_banner = 0;n_slideshow = 0;n_carousel = 0;n_welcome = 0;
+  var numer = {
+	'banner': 0,
+	'slideshow': 0,
+	'carousel': 0,
+	'welcome': 0
+  }
 
   for(var pposition in ppositions){
 
@@ -61,40 +68,50 @@ function pjsBuild(th){
 	// ПОМЕЧАЕМ
 	for(var num in freyrModulesInPosition[1][pposition]){
 	
+		// в php массив freyrModulesInPosition специально сортируется по sort_order, поэтому (num) это строго порядок сортировки
+		
 		m = freyrModulesInPosition[1][pposition][num];
-	
-		switch (m.name_en){
-		  case "banner":
-		  // Отмечаем баннеры
-		  pjsMarkBoxBaner(n_banner,m)
-		  n_banner++
-		  break
-		case "category":
-		case "store":
-		case "featured":
-		case "affiliate":
-		case "bestseller":
-		case "account":
-		case "special":
-		  // Отмечаем по title
-		  pjsMarkBoxTitle(m)
-		  break
-		case "welcome":
-		  pjsMarkBoxWelcome(n_welcome,m)
-		  n_welcome++
-		  break
-		case "slideshow":
-		  // Отмечаем slideshow
-		  pjsMarkBoxSlideshow(n_slideshow,m)
-		  n_slideshow++
-		  break
-		case "carousel":
-		  // Отмечаем carousel
-		  pjsMarkBoxCarousel(n_carousel,m)
-		  n_carousel++
-		  break
-		default:
-		  // alert('Я таких значений не знаю')
+
+		// 1) метки
+		if(panelLabels(ppositions[pposition].name, num)){
+			// нашелся по меткам
+			// но не подчищается массив gjstitle
+		}else{
+			// 2) ищем по классам
+			switch (m.name_en){
+			case "banner":
+			  // Отмечаем баннеры
+			  // pjsMarkBoxBaner(n_banner,m)
+			  pjsMarkBoxBaner(numer[m.name_en],m)
+			  numer[m.name_en]++
+			  break
+			case "category":
+			case "store":
+			case "featured":
+			case "affiliate":
+			case "bestseller":
+			case "account":
+			case "special":
+			  // Отмечаем по title
+			  pjsMarkBoxTitle(m)
+			  break
+			case "welcome":
+			  pjsMarkBoxWelcome(numer[m.name_en],m)
+			  numer[m.name_en]++
+			  break
+			case "slideshow":
+			  // Отмечаем slideshow
+			  pjsMarkBoxSlideshow(numer[m.name_en],m)
+			  numer[m.name_en]++
+			  break
+			case "carousel":
+			  // Отмечаем carousel
+			  pjsMarkBoxCarousel(numer[m.name_en],m)
+			  numer[m.name_en]++
+			  break
+			default:
+			  // alert('Я таких значений не знаю')
+			}
 		}
 
 		// подготавливаем ширину центральной части
@@ -123,7 +140,7 @@ function pjsBuild(th){
   for(var n in ppositions){
 
 	// поиск эллемента с текущим классом
-	t = $(gjsiframe).contents().find(ppositions[n]);
+	t = $(gjsiframe).contents().find(ppositions[n].id);
 
 	// если нашелся блок с таким классом
 	if(t.length > 0){
@@ -198,8 +215,12 @@ function pjsBuild(th){
 }
 
 // ****************************************************************************************************
-// *****************                   Отметка эллементов (Mark)                      *****************
+// *****************                   Отметка эллементов (Labels)                    *****************
 // ****************************************************************************************************
+// отметка любого из модулей
+function panelAllMarkBox(modul){
+  $(modul).addClass("freyr "+m.name_en+"_"+m.id).attr("data-nameen", m.name_en).attr("data-id", m.id);
+}
 function pjsMarkBoxBaner(n_banner, m){
   $(gjsiframe).contents().find("#banner"+n_banner).addClass("freyr "+m.name_en+"_"+m.id).attr("data-nameen", m.name_en).attr("data-id", m.id);
 }
@@ -208,9 +229,6 @@ function pjsMarkBoxTitle(m){
   if(m.title_catalog==$(element).text()){
 	box = $(element).parent(".box");
 	$(box).addClass("freyr "+m.name_en+"_"+m.id).attr("data-nameen", m.name_en).attr("data-id", m.id);
-
-	// выводим эллементы
-	// pjsOutputControls(box);
 
 	delete gjstitle[indx];
 	// прекратить перебор
@@ -241,8 +259,6 @@ function pjsMarkBoxCarousel(num){
 // ****************************************************************************************************
 // *****************                                                                  *****************
 // ****************************************************************************************************
-
-// 
 function pjsTopSett(listOfSettings){
   // скрытие и очистка блоков :input на верхней панели
   pjsHideTopSet();
@@ -360,6 +376,15 @@ function submitAll(formURLall) {
 // ****************************************************************************************************
 // *****************                              Общие                               *****************
 // ****************************************************************************************************
+var checkMod;
+function panelLabels(name,num){
+  t = "."+name+"_"+num;
+  checkMod = $(gjsiframe).contents().find(t);
+  if(checkMod.length != 1) return false; // не нашли такого блока
+
+  panelAllMarkBox(checkMod);
+  return true; // т.е. нашли модуль
+}
 
 // заглушка
 function pjsCover(state){
