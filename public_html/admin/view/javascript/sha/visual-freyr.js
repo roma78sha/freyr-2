@@ -16,6 +16,11 @@ $(document).ready(function () {
 
   // через 2 секунды автосброс и автоопределение управляемых модулей
   /* setTimeout(function(){pjsBuild();second_passed()}, 2000) */
+  
+  // fix не сбрасывается если внутри перетаскиваемого div есть js
+  $("#above-freyr").on('click', function(){
+	pjsCover(false)
+  });
 
 });
 
@@ -173,7 +178,7 @@ function pjsBuild(th){
 	  // делаем перетаскиваемыми
 	  $(this).sortable({
 		// helper:'clone',
-		cursor:"pointer",
+		cursor:"move",
 		cursorAt:{bottom:0},
 		// revert:true,
 		items:".freyr",
@@ -193,6 +198,9 @@ function pjsBuild(th){
 		placeholder:"ui-state-highlight",
 		forcePlaceholderSize:true,
 		activate: function(event, ui) {
+		  // 
+		  
+		  
 		  $(this).find(".reg-freyr").removeClass("reg-freyr").css("outline","none");
 		  $(ui.item).addClass("reg-freyr").css("outline","dashed");
 		  pEditingFly(false, $(ui.item).attr("data-nameen"), $(ui.item).attr("data-id"), true);
@@ -211,6 +219,12 @@ function pjsBuild(th){
 	  delete ppositions[pposition];
 
   });
+  
+  // приостанавливаем некоторые js
+  var t = $(gjsiframe).contents().find(".nivoSlider");
+  // var t1 = $(t).attr('nivo');
+  $(t).off('**');
+  // $(t).data("nivo").stop();
 
 }
 
