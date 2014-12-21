@@ -37,6 +37,7 @@
 		<div class="notice" id="notice_3" title=""><br /><span></span><br /><br />Модуль ещё не установлен!<br /></div>
 		<div class="notice" id="notice_4" title="">Вы действительно хотите удалить модуль?</div>
 	  </div>
+	<div id="scripts_temp"></div>
 	<div class="clr"></div>
 </div>
 <?php echo $footer; ?>

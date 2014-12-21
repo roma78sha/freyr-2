@@ -137,9 +137,20 @@ function pjsBuild(th){
 	}
   }
   
-  // исправление если ошибка
+  // поправка если ошибка
   gcentertopwidth > 1100 ? gcentertopwidth = 1100 : false;
   gcentertopwidth < 100 ? gcentertopwidth = 100 : false;
+  // разные поправки
+  for(var t_position in freyrModulesInPosition[1]){
+	for(var t_module in freyrModulesInPosition[1][t_position]){
+	  // если есть js
+	  /* t_name = "."+freyrModulesInPosition[1][t_position][t_module].name_en+"_"+freyrModulesInPosition[1][t_position][t_module].id;
+	  t_mod = $(gjsiframe).contents().find(t_name);
+	  t_child = $(t_mod).children("script");
+
+	  $(t_child).appendTo("#scripts_temp"); */
+	}
+  }
   
   // найти и пометить наборы, те, что потом будут sortable (по стандартным/предустановленным позициям)
   for(var n in ppositions){
@@ -198,9 +209,6 @@ function pjsBuild(th){
 		placeholder:"ui-state-highlight",
 		forcePlaceholderSize:true,
 		activate: function(event, ui) {
-		  // 
-		  
-		  
 		  $(this).find(".reg-freyr").removeClass("reg-freyr").css("outline","none");
 		  $(ui.item).addClass("reg-freyr").css("outline","dashed");
 		  pEditingFly(false, $(ui.item).attr("data-nameen"), $(ui.item).attr("data-id"), true);
@@ -221,9 +229,9 @@ function pjsBuild(th){
   });
   
   // приостанавливаем некоторые js
-  var t = $(gjsiframe).contents().find(".nivoSlider");
+  // var t = $(gjsiframe).contents().find(".nivoSlider");
   // var t1 = $(t).attr('nivo');
-  $(t).off('**');
+  // $(t).off('**');
   // $(t).data("nivo").stop();
 
 }
