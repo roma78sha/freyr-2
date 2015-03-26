@@ -1,7 +1,7 @@
 <?php
 // Heading
 $_['heading_title_fix']    = 'Panel Regularize "Freyr"';
-$_['heading_title']    = 'Panel Regularize "Freyr"';
+$_['heading_title']    = 'Panel "Freyr 2.0"';
 
 // Text
 $_['text_module']      = 'Модули';

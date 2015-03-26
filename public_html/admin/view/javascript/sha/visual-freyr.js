@@ -31,7 +31,6 @@ function pjsBuild(th){
   // 
   top.document.getElementById('iframe-freyr').height = document.body.scrollHeight+700+"px";
 
-  // 
   /*   win = document.getElementById('iframe-freyr').contentWindow;
   element = win.document.getElementsByTagName('body'); */
 
@@ -90,16 +89,14 @@ function pjsBuild(th){
 			  pjsMarkBoxBaner(numer[m.name_en],m)
 			  numer[m.name_en]++
 			  break
-			case "category":
+			/* case "category":
 			case "store":
 			case "featured":
 			case "affiliate":
 			case "bestseller":
 			case "account":
 			case "special":
-			  // Отмечаем по title
-			  pjsMarkBoxTitle(m)
-			  break
+			  break */
 			case "welcome":
 			  pjsMarkBoxWelcome(numer[m.name_en],m)
 			  numer[m.name_en]++
@@ -115,7 +112,8 @@ function pjsBuild(th){
 			  numer[m.name_en]++
 			  break
 			default:
-			  // alert('Я таких значений не знаю')
+			  // Отмечаем по title
+			  pjsMarkBoxTitle(m)
 			}
 		}
 
@@ -233,6 +231,9 @@ function pjsBuild(th){
   // var t1 = $(t).attr('nivo');
   // $(t).off('**');
   // $(t).data("nivo").stop();
+
+  // минимальная ширина колонок, что-бы не были полностью пустыми
+  $(gjsiframe).contents().find(".ui-sortable").attr("style","min-height:200px");
 
 }
 
